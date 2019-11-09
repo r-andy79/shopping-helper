@@ -7,7 +7,12 @@
   <title>Hello Flask</title>
 </head>
 <body>
-
-  <h1>Home page</h1>
+  <ul>
+  {% for item in items %}
+      <li>{{item.item_name}},
+      {{item.category_name}},
+      {{item.quantity_name}},</li>
+  {% endfor %}
+</ul>
 </body>
 </html>

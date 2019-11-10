@@ -13,7 +13,11 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_items")
 def get_items():
-    return render_template("items.html", items=mongo.db.inventory.find())
+    return render_template("items.html", inventory=mongo.db.inventory.find())
+
+@app.route("/shopping_list")
+def shopping_cart():
+    return render_template("shopping_list.html", inventory=mongo.db.inventory.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]}))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)

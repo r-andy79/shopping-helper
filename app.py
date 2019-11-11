@@ -19,5 +19,16 @@ def get_items():
 def shopping_cart():
     return render_template("shopping_list.html", inventory=mongo.db.inventory.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]}))
 
+
+@app.route('/add_item')
+def add_item():
+    return render_template('additem.html', categories=mongo.db.categories.find(), quantities=mongo.db.quantities.find())
+
+@app.route('/insert_item', methods=['POST'])
+def insert_item():
+    items = mongo.db.inventory
+    items.insert_one(request.form.to_dict())
+    return redirect(url_for('get_items'))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)

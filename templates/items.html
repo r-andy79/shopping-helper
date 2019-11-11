@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<ul>
-  {% for item in inventory %}
-  <li>{{item.item_name}}, {{item.category_name}}, {{item.quantity_name}},</li>
+
+<ul class="collapsible">
+    {% for item in inventory %}
+  <li>
+    <div class="collapsible-header"><strong>{{item.item_name}}</strong></div>
+    <div class="collapsible-body"><span>{{item.category_name}} - {{item.quantity_name}}</span></div>
+  </li>
   {% endfor %}
 </ul>
 {% endblock %}

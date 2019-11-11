@@ -24,10 +24,23 @@ def shopping_cart():
 def add_item():
     return render_template('additem.html', categories=mongo.db.categories.find(), quantities=mongo.db.quantities.find())
 
+
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
     items = mongo.db.inventory
     items.insert_one(request.form.to_dict())
+    return redirect(url_for('get_items'))
+
+
+@app.route('/add_category')
+def add_category():
+    return render_template('addcategory.html', categories=mongo.db.categories.find())
+
+
+@app.route('/insert_category', methods=['POST'])
+def insert_category():
+    categories = mongo.db.categories
+    categories.insert_one(request.form.to_dict())
     return redirect(url_for('get_items'))
 
 if __name__ == '__main__':

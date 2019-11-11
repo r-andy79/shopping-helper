@@ -16,7 +16,7 @@ def get_items():
     return render_template("items.html", inventory=mongo.db.inventory.find())
 
 @app.route("/shopping_list")
-def shopping_cart():
+def shopping_list():
     return render_template("shopping_list.html", inventory=mongo.db.inventory.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]}))
 
 

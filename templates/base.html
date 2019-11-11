@@ -14,11 +14,11 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Shopping helper</a>
+      <a href="{{ url_for('get_items') }}" class="brand-logo">Shopping helper</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+        <li><a href="{{ url_for('add_item') }}">Add item</a></li>
+        <li><a href="{{ url_for('add_category') }}">Add category</a></li>
+        <li><a href="{{ url_for('shopping_list') }}">Shopping list</a></li>
       </ul>
     </div>
   </nav>

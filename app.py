@@ -9,20 +9,23 @@ app.config["MONGO_DBNAME"] = 'shopping_helper'
 app.config["MONGO_URI"] = 'mongodb+srv://root:Pablo51@myfirstcluster-8ubao.mongodb.net/shopping_helper?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
+inventory_collection = mongo.db.inventory
+categories_collection = mongo.db.categories
+quantities_collection = mongo.db.quantities
 
 @app.route("/")
 @app.route("/get_items")
 def get_items():
-    return render_template("items.html", inventory=mongo.db.inventory.find())
+    return render_template("items.html", inventory=inventory_collection.find())
 
 @app.route("/shopping_list")
 def shopping_list():
-    return render_template("shopping_list.html", inventory=mongo.db.inventory.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]}))
+    return render_template("shopping_list.html", inventory=inventory_collection.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]}))
 
 
 @app.route('/add_item')
 def add_item():
-    return render_template('additem.html', categories=mongo.db.categories.find(), quantities=mongo.db.quantities.find())
+    return render_template('additem.html', categories=categories_collection.find(), quantities=mongo.db.quantities.find())
 
 
 @app.route('/insert_item', methods=['POST'])
@@ -32,9 +35,16 @@ def insert_item():
     return redirect(url_for('get_items'))
 
 
+@app.route('/edit_item/<item_id>')
+def edit_item(item_id):
+    the_item = inventory_collection.find_one({"_id": ObjectId(item_id)})
+    the_category = mongo.db.categories.find()
+    return render_template('edititem.html', item=the_item, category=the_category)
+
+
 @app.route('/add_category')
 def add_category():
-    return render_template('addcategory.html', categories=mongo.db.categories.find())
+    return render_template('addcategory.html', categories=categories_collection.find())
 
 
 @app.route('/insert_category', methods=['POST'])

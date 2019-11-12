@@ -25,7 +25,7 @@ def shopping_list():
 
 @app.route('/add_item')
 def add_item():
-    return render_template('additem.html', categories=categories_collection.find(), quantities=mongo.db.quantities.find())
+    return render_template("additem.html", categories=categories_collection.find(), quantities=mongo.db.quantities.find())
 
 
 @app.route('/insert_item', methods=['POST'])
@@ -39,7 +39,13 @@ def insert_item():
 def edit_item(item_id):
     the_item = inventory_collection.find_one({"_id": ObjectId(item_id)})
     the_category = mongo.db.categories.find()
-    return render_template('edititem.html', item=the_item, category=the_category)
+    return render_template("edititem.html", item=the_item, category=the_category)
+
+
+@app.route('/delete_item/<item_id>')
+def delete_item(item_id):
+    inventory_collection.remove({"_id": ObjectId(item_id)})
+    return render_template("items.html", inventory=inventory_collection.find())
 
 
 @app.route('/add_category')

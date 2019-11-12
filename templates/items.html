@@ -1,11 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<h3 class="center-align">Food inventory</h3>
 <ul class="collapsible">
     {% for item in inventory %}
   <li>
-    <div class="collapsible-header"><strong>{{item.item_name}}</strong></div>
-    <div class="collapsible-body"><span>{{item.category_name}} - {{item.quantity_name}}</span></div>
+    <div class="collapsible-header">
+      <div class="col s9"><i class="material-icons">expand_more</i><strong>{{item.item_name}}</strong></div>
+      <div class="col s3">
+
+      </div>
+      </div>
+    <div class="collapsible-body">
+      <div class="row item-details">
+      <div class="col s8"><span>Quantity - <strong>{{item.quantity_name}}</strong>, Category: {{item.category_name}}</span></div>
+      
+      <div class="right-align col s4">
+      <a class="waves-effect waves-light btn-small blue lighten-2">Edit</a>
+      <a class="waves-effect waves-light btn-small">Remove</a>
+    </div>
+  </div>
+    </div>
   </li>
   {% endfor %}
 </ul>

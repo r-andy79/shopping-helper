@@ -45,6 +45,18 @@ def edit_item(item_id):
     return render_template("edititem.html", item=the_item, categories=category_list, quantities=quantity_list)
 
 
+@app.route('/update_item/<item_id>', methods=['POST'])
+def update_item(item_id):
+    items = inventory_collection
+    items.update( {'_id': ObjectId(item_id)},
+    {
+        'item_name': request.form.get('item_name'),
+        'item_description': request.form.get('item_description'),
+        'category_name': request.form.get('category_name'),
+        'quantity_name': request.form.get('quantity_name')
+    })
+    return redirect(url_for('get_items'))
+
 @app.route('/delete_item/<item_id>')
 def delete_item(item_id):
     inventory_collection.remove({"_id": ObjectId(item_id)})

@@ -17,18 +17,5 @@
     </button>
   </div>
   </form>
-  <div class="row">
-    <ul>
-      {% for cat in categories %}
-      <li>
-        <div class="col s10">{{ cat.category_name }}</div>
-        <div class="col s2 center-align">
-            <a href="#" class="waves-effect waves-light btn-small blue lighten-2">Edit</a>
-            <hr>
-        </div>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
 </div>
 {% endblock %}

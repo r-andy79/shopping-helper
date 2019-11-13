@@ -57,6 +57,14 @@ def update_item(item_id):
     })
     return redirect(url_for('get_items'))
 
+
+@app.route('/edit_category/<category_id>')
+def edit_category(category_id):
+    the_category = categories_collection.find_one({"_id": ObjectId(category_id)})
+    _categories = categories_collection.find()
+    category_list = [category for category in _categories]
+    return render_template("editcategory.html", category=the_category, categories=category_list)
+
 @app.route('/delete_item/<item_id>')
 def delete_item(item_id):
     inventory_collection.remove({"_id": ObjectId(item_id)})
@@ -72,7 +80,7 @@ def add_category():
 def insert_category():
     categories = mongo.db.categories
     categories.insert_one(request.form.to_dict())
-    return redirect(url_for('get_items'))
+    return redirect(url_for('add_category'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)

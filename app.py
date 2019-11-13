@@ -25,12 +25,12 @@ def shopping_list():
 
 @app.route('/add_item')
 def add_item():
-    return render_template("additem.html", categories=categories_collection.find(), quantities=mongo.db.quantities.find())
+    return render_template("additem.html", categories=categories_collection.find(), quantities=quantities_collection.find())
 
 
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
-    items = mongo.db.inventory
+    items = inventory_collection
     items.insert_one(request.form.to_dict())
     return redirect(url_for('get_items'))
 
@@ -38,8 +38,11 @@ def insert_item():
 @app.route('/edit_item/<item_id>')
 def edit_item(item_id):
     the_item = inventory_collection.find_one({"_id": ObjectId(item_id)})
-    the_category = mongo.db.categories.find()
-    return render_template("edititem.html", item=the_item, category=the_category)
+    _categories = categories_collection.find()
+    _quantities = quantities_collection.find()
+    category_list = [category for category in _categories]
+    quantity_list = [quantity for quantity in _quantities]
+    return render_template("edititem.html", item=the_item, categories=category_list, quantities=quantity_list)
 
 
 @app.route('/delete_item/<item_id>')

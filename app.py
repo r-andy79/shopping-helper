@@ -51,19 +51,12 @@ def update_item(item_id):
     items.update( {'_id': ObjectId(item_id)},
     {
         'item_name': request.form.get('item_name'),
-        'item_description': request.form.get('item_description'),
+        'item_note': request.form.get('item_note'),
         'category_name': request.form.get('category_name'),
         'quantity_name': request.form.get('quantity_name')
     })
     return redirect(url_for('get_items'))
 
-
-@app.route('/edit_category/<category_id>')
-def edit_category(category_id):
-    the_category = categories_collection.find_one({"_id": ObjectId(category_id)})
-    _categories = categories_collection.find()
-    category_list = [category for category in _categories]
-    return render_template("editcategory.html", category=the_category, categories=category_list)
 
 @app.route('/delete_item/<item_id>')
 def delete_item(item_id):
@@ -82,5 +75,14 @@ def insert_category():
     categories.insert_one(request.form.to_dict())
     return redirect(url_for('add_category'))
 
+
+@app.route('/edit_category/<item_id>')
+def edit_category(item_id):
+    the_category = categories_collection.find_one({"_id": ObjectId(item_id)})
+    _categories = categories_collection.find()
+    category_list = [category for category in _categories]
+    return render_template("editcategory.html", category=the_category, categories=category_list)
+
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)

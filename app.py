@@ -58,6 +58,18 @@ def update_item(item_id):
     return redirect(url_for('get_items'))
 
 
+@app.route('/buy_item/<item_id>', methods=['GET', 'POST'])
+def buy_item(item_id):
+    items = inventory_collection
+    items.update({'_id': ObjectId(item_id)},
+    {"$set":
+        {
+            'quantity_name': "full"
+        }
+    })
+    return redirect(url_for('shopping_list'))
+
+
 @app.route('/delete_item/<item_id>')
 def delete_item(item_id):
     inventory_collection.remove({"_id": ObjectId(item_id)})

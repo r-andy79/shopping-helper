@@ -2,7 +2,12 @@
 {% block content %}
 <ul>
   {% for item in inventory %}
-  <li>{{item.item_name}}, {{item.item_note}}</li>
+  <li><div class="row">
+    <div class="col s10">{{item.item_name}}, {{item.item_note}}</div>
+    <div class="col s2 right-align">
+      <a href="{{ url_for('buy_item', item_id=item._id) }}" class="waves-effect waves-light btn-small blue lighten-2">Bought</a>
+    </div>
+  </div></li>
   {% endfor %}
 </ul>
 {% endblock %}

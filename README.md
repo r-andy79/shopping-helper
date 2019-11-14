@@ -6,6 +6,8 @@ The aim of Shopping Helper application is to help managing the household food su
 
 ## User stories
 
-* As a user I want to be able to add products to the database, specifying their current amount, category and adding a short note
+* As a user I want to be able to add products to the database, specifying their current quantity, category and adding a short note
 * As a user I want to be able to search the database, to see if I'm in possession of certain product
-* As a user I want to...
+* As a user I want to be able to monitor quantity of different products that I have
+* As a user I want to be able to update the details of owned products, such as: name, note, quantity, category
+* As a user I want to be able to add new categories to the database

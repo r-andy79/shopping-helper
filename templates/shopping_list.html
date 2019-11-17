@@ -1,13 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 <ul>
-  {% for item in inventory %}
-  <li><div class="row">
-    <div class="col s10">{{item.item_name}}, {{item.item_note}}</div>
-    <div class="col s2 right-align">
-      <a href="{{ url_for('buy_item', item_id=item._id) }}" class="waves-effect waves-light btn-small blue lighten-2">Bought</a>
+  {% for category in grouped_items %}
+  <li>
+    <div class="row">
+      <div class="col s12"><strong>{{category}}</strong></div>
+      {% for product in grouped_items[category] %}
+      <div class="col s8">
+        <span>
+          Name: {{product.name}},
+          Note: {{product.note}}
+        </span>
+      </div>
+      <div class="col s4">
+          <a href="{{ url_for('buy_item', item_id=product.id) }}" class="waves-effect waves-light btn-small blue lighten-2">Bought</a>
+      </div>
+      {% endfor %}
     </div>
-  </div></li>
+  </li>
+
   {% endfor %}
 </ul>
 {% endblock %}

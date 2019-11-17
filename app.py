@@ -16,6 +16,7 @@ quantities_collection = mongo.db.quantities
 def group_by_category(products):
     categories = {}
     for p in products:
+        i = p['_id']
         c = p['category_name']
         n = p['item_name']
         q = p['quantity_name']
@@ -23,7 +24,7 @@ def group_by_category(products):
         
         if not categories.get(c):
             categories[c] = []
-        x = {'name': n, 'quantity': q, 'note': note, 'category': c}
+        x = {'id': i, 'name': n, 'quantity': q, 'note': note, 'category': c}
         categories[c].append(x)
     return categories
 
@@ -36,7 +37,9 @@ def get_items():
 
 @app.route("/shopping_list")
 def shopping_list():
-    return render_template("shopping_list.html", inventory=inventory_collection.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]}))
+    inventory=inventory_collection.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]})
+    grouped_items = group_by_category(inventory)
+    return render_template("shopping_list.html", grouped_items=grouped_items)
 
 
 @app.route('/add_item')
@@ -89,7 +92,7 @@ def buy_item(item_id):
 @app.route('/delete_item/<item_id>')
 def delete_item(item_id):
     inventory_collection.remove({"_id": ObjectId(item_id)})
-    return render_template("items.html", inventory=inventory_collection.find())
+    return redirect(url_for('get_items'))
 
 
 @app.route('/add_category')

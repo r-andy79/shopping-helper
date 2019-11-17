@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="row">
+  <form action="" class="col s12">
+      <input placeholder="item name" id="item_name" name="item_name" type="text" class="validate">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+  </form>
+</div>
 <h3 class="center-align">Food inventory</h3>
 <ul class="collapsible">
   {% for category in grouped_items %}

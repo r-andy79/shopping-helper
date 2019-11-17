@@ -2,23 +2,30 @@
 {% block content %}
 <h3 class="center-align">Food inventory</h3>
 <ul class="collapsible">
-    {% for item in inventory %}
+  {% for category in grouped_items %}
   <li>
     <div class="collapsible-header">
-      <div class="col s9"><i class="material-icons">expand_more</i><strong>{{item.item_name}}</strong></div>
+      <div class="col s9"><i class="material-icons">expand_more</i><strong>{{category}}</strong></div>
       <div class="col s3">
-
       </div>
-      </div>
+    </div>
     <div class="collapsible-body">
       <div class="row item-details">
-      <div class="col s8"><span>Note: <strong>{{item.item_note}}</strong>, Quantity: <strong>{{item.quantity_name}}</strong>, Category: <strong>{{item.category_name}}</strong></span></div>
+        {% for product in grouped_items[category] %}
+        <div class="col s8">
+          <span>
+             Name: <strong>{{product.name}}</strong>, 
+             Note: <strong>{{product.note}}</strong>, 
+             Quantity: <strong>{{product.quantity}}</strong>
+          </span>
+        </div>
       
       <div class="right-align col s4">
-      <a href="{{url_for('edit_item', item_id=item._id)}}" class="waves-effect waves-light btn-small blue lighten-2">Edit</a>
-      <a href="{{url_for('delete_item', item_id=item._id)}}" class="waves-effect waves-light btn-small">Remove</a>
+      <a href="#" class="waves-effect waves-light btn-small blue lighten-2">Edit</a>
+      <a href="#" class="waves-effect waves-light btn-small">Remove</a> 
+      </div>
+      {% endfor %}
     </div>
-  </div>
     </div>
   </li>
   {% endfor %}

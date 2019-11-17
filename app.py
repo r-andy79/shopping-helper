@@ -13,10 +13,26 @@ inventory_collection = mongo.db.inventory
 categories_collection = mongo.db.categories
 quantities_collection = mongo.db.quantities
 
+def group_by_category(products):
+    categories = {}
+    for p in products:
+        c = p['category_name']
+        n = p['item_name']
+        q = p['quantity_name']
+        note = p['item_note']
+        
+        if not categories.get(c):
+            categories[c] = []
+        x = {'name': n, 'quantity': q, 'note': note, 'category': c}
+        categories[c].append(x)
+    return categories
+
 @app.route("/")
 @app.route("/get_items")
 def get_items():
-    return render_template("items.html", inventory=inventory_collection.find())
+    inventory=inventory_collection.find()
+    grouped_items = group_by_category(inventory)
+    return render_template("items.html", grouped_items=grouped_items)
 
 @app.route("/shopping_list")
 def shopping_list():

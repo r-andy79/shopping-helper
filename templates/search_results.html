@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>Results</h3>
+    {%print(results)%}
+    {% for i in results %}
+      <p>{{i.item_name}}</p>
+      <p>{{i.item_quantity}}</p>
+      <p>{{i.item_note}}</p>
+    {% endfor %}
+{% endblock %}

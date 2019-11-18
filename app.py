@@ -47,6 +47,14 @@ def add_item():
     return render_template("additem.html", categories=categories_collection.find(), quantities=quantities_collection.find())
 
 
+@app.route('/search_item', methods=['GET', 'POST'])
+def search_item():
+    search_item = request.form.get('item_name')
+    results=inventory_collection.find({"item_name": search_item})
+    results_list = [result for result in results]
+    return render_template("search_results.html", results=results_list)
+
+
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
     items = inventory_collection

@@ -2,9 +2,9 @@
 {% block content %}
 <div class="row">
   <h3 class="center-align">Search product</h3>
-  <form action="" class="col s12">
+  <form action="/search_item" method="POST" class="col s12">
       <input placeholder="item name" id="item_name" name="item_name" type="text" class="validate">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <button class="btn waves-effect waves-light" type="submit">Submit
           <i class="material-icons right">send</i>
         </button>
   </form>
@@ -23,8 +23,8 @@
         {% for product in grouped_items[category] %}
         <div class="col s8">
           <span>
-             Name: <strong>{{product.name}}</strong>, 
-             Note: <strong>{{product.note}}</strong>, 
+             Name: <strong>{{product.name}}</strong> 
+             Note: <strong>{{product.note}}</strong> 
              Quantity: <strong>{{product.quantity}}</strong>
           </span>
         </div>

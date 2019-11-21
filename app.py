@@ -123,6 +123,16 @@ def edit_category(item_id):
     return render_template("editcategory.html", category=the_category, categories=category_list)
 
 
+@app.route('/update_category/<item_id>', methods=['POST'])
+def update_category(item_id):
+    categories = categories_collection
+    categories.update( {'_id': ObjectId(item_id)},
+    {
+        'category_name': request.form.get('category_name')
+    })
+    return redirect(url_for('add_category'))
+
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html')

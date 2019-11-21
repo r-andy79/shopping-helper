@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3>Add Category</h3>
+<h3>Edit Category</h3>
 <div class="row">
-  <form action="{{ url_for('insert_category') }}" method="POST" class="col s12">
+  <form action="{{ url_for('update_category', item_id=category._id) }}" method="POST" class="col s12">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">assignment</i>
         <input id="category_name" name="category_name" type="text" class="validate">
-        <label for="category_name">Add a new category name</label>
+        <label for="category_name">Change the category name</label>
       </div>
     </div>
   <div class="row">
-  <button class="btn waves-effect waves-light" type="submit">Add Category
+  <button class="btn waves-effect waves-light" type="submit">Edit Category
       <i class="material-icons right">playlist_add</i>
     </button>
   </div>

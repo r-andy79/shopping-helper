@@ -21,9 +21,9 @@
     <ul>
       {% for cat in categories %}
       <li>
-        <div class="col s10">{{ cat.category_name }}</div>
+        <div class="col s10">{{ cat.category_name }}{{cat.category_id}}</div>
         <div class="col s2 center-align">
-            <a href="#" class="waves-effect waves-light btn-small blue lighten-2">Edit</a>
+            <a href= "{{ url_for('edit_category', item_id=cat._id) }}" class="waves-effect waves-light btn-small blue lighten-2">Edit</a>
             <hr>
         </div>
       </li>

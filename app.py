@@ -1,6 +1,6 @@
 import os
 import datetime
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, flash, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = 'shopping_helper'
 app.config["MONGO_URI"] = 'mongodb+srv://root:Pablo51@myfirstcluster-8ubao.mongodb.net/shopping_helper?retryWrites=true&w=majority'
+app.secret_key = 'some random text'
 
 mongo = PyMongo(app)
 inventory_collection = mongo.db.inventory
@@ -73,6 +74,7 @@ def insert_item():
       "date_added": datetime.datetime.now()
     }
     )
+    flash('An item has been added')
     return redirect(url_for('get_items'))
 
 
@@ -90,12 +92,15 @@ def edit_item(item_id):
 def update_item(item_id):
     items = inventory_collection
     items.update( {'_id': ObjectId(item_id)},
-    {
+    {"$set":
+      {
         'item_name': request.form.get('item_name'),
         'item_note': request.form.get('item_note'),
         'category_name': request.form.get('category_name'),
         'quantity_name': request.form.get('quantity_name')
+      }
     })
+    flash('An item has been updated')
     return redirect(url_for('get_items'))
 
 

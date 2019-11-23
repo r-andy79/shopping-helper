@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+        <li>{{message}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  {% endwith %}
   <h3 class="center-align">Search product</h3>
   <form action="/search_item" method="POST" class="col s12">
       <input placeholder="item name" id="item_name" name="item_name" type="text" class="validate col s9">

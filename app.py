@@ -101,7 +101,8 @@ def buy_item(item_id):
     items.update({'_id': ObjectId(item_id)},
     {"$set":
         {
-            'quantity_name': "full"
+            'quantity_name': "full",
+            'date_added': datetime.datetime.now()
         }
     })
     return redirect(url_for('shopping_list'))

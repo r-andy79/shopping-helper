@@ -50,7 +50,7 @@ def add_item():
 @app.route('/search_item', methods=['GET', 'POST'])
 def search_item():
     search_item = request.form.get('item_name')
-    results=inventory_collection.find({"item_name": search_item})
+    results=inventory_collection.find({"item_name": {"$regex": search_item}})
     results_list = [result for result in results]
     return render_template("search_results.html", results=results_list)
 

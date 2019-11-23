@@ -26,7 +26,7 @@
              Name: <strong>{{product.name}}</strong>, 
              Note: <strong>{{product.note}}</strong>, 
              Quantity: <strong>{{product.quantity}}</strong>,
-             Last bought on: <strong>{{product.date}}</strong>
+             Last bought on: <strong>{{product.date|datetimeformat('%d-%m-%Y')}}</strong>
           </span>
         </div>
       

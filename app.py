@@ -30,6 +30,10 @@ def group_by_category(products):
         categories[c].append(x)
     return categories
 
+@app.template_filter('datetimeformat')
+def datetimeformat(value, format='%d-%m-%Y'):
+    return value.strftime(format)
+
 @app.route("/")
 @app.route("/get_items")
 def get_items():

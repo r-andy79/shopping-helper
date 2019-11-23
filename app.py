@@ -1,4 +1,5 @@
 import os
+import datetime
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -20,11 +21,12 @@ def group_by_category(products):
         c = p['category_name']
         n = p['item_name']
         q = p['quantity_name']
+        d = p['date_added']
         note = p['item_note']
         
         if not categories.get(c):
             categories[c] = []
-        x = {'id': i, 'name': n, 'quantity': q, 'note': note, 'category': c}
+        x = {'id': i, 'name': n, 'quantity': q, 'note': note, 'category': c, 'date': d}
         categories[c].append(x)
     return categories
 
@@ -58,7 +60,15 @@ def search_item():
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
     items = inventory_collection
-    items.insert_one(request.form.to_dict())
+    form = request.form.to_dict()
+    items.insert_one({
+      "item_name": form["item_name"],
+      "item_note": form["item_note"],
+      "category_name": form["category_name"],
+      "quantity_name": form["quantity_name"],
+      "date_added": datetime.datetime.now()
+    }
+    )
     return redirect(url_for('get_items'))
 
 

@@ -145,6 +145,16 @@ def edit_category(item_id):
 
 @app.route('/update_category/<item_id>', methods=['POST'])
 def update_category(item_id):
+    current_category_name = categories_collection.find_one({'_id': ObjectId(item_id)})['category_name']
+    print(current_category_name)
+    inventory = inventory_collection
+    inventory.update({'category_name': current_category_name},
+    {"$set":
+      {
+        'category_name': request.form.get('category_name')
+      }
+    } 
+    )
     categories = categories_collection
     categories.update( {'_id': ObjectId(item_id)},
     {

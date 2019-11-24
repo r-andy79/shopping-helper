@@ -2,12 +2,13 @@
 
 Third Milestone Project - Data-Centric Development - Code Institute
 
-The aim of Shopping Helper application is to help managing household's food supplies and. Application consists of to main sections: Items inventory and a Shopping list. User can add products to the inventory, specifying their name, category and quantity. If the amount of a certain product is low or none, it will show up on a Shopping list. User can also add new categories and edit them.
+The aim of Shopping Helper application is to help managing household's food supplies and groceries shopping. Application consists of to main sections: Supply inventory and a Shopping list. User can add products to the inventory, specifying their name, category and quantity. If the amount of a certain product is low or none, it will show up on a Shopping list. User can also add new categories and edit them.
 
 Existing features:
 * adding items to supply inventory,
-* filtering items ...
-* searching items if it occurs in inventory,
+* editing and removing existing items
+* filtering items based on quantities of the products (shopping list)
+* searching the database to check if item exists in inventory,
 * 
 
 ## User stories
@@ -19,6 +20,7 @@ Existing features:
 * As a user I want to be able to add new categories to the database
 
 ## Features
+The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of products. User can add the products he/she has in their storage using 'Add an item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low, none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
 
 ## Testing
 

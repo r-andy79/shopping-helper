@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
     <h3>Results</h3>
-    {%print(results)%}
-    {% for i in results %}
-      <p>{{i.item_name}}</p>
-      <p>{{i.item_quantity}}</p>
-      <p>{{i.item_note}}</p>
+    {% if results == [] %}
+    <p>The item does not exist</p>
+    {% else %}
+    <ul>
+    {% for item in results %}
+    <li>
+      <div class="row">
+      <div class="col s8"><span><strong>Name: </strong></span>{{item.item_name}}, <span><strong>Quantity: </strong></span>{{item.quantity_name}}, <span><strong>Note: </strong></span>{{item.item_note}}</div>
+      <div class="col s4">
+          <a href="{{ url_for('edit_item', item_id=item._id) }}" class="waves-effect waves-light btn-small blue lighten-2">Edit</a>
+          <a href="{{ url_for('delete_item', item_id=item._id) }}" class="waves-effect waves-light btn-small">Remove</a> 
+
+      </div>
+    </div>
+      </li>
     {% endfor %}
+  </ul>
+    {% endif %}
+    
+    <a href="{{ url_for('get_items') }}" class="waves-effect waves-light btn">Main page</a>
 {% endblock %}

@@ -10,15 +10,14 @@
     </ul>
     {% endif %}
   {% endwith %}
-  <h3 class="center-align">Search product</h3>
   <form action="/search_item" method="POST" class="col s12">
-      <input placeholder="item name" id="item_name" name="item_name" type="text" class="validate col s9">
+      <input placeholder="Enter item name" id="item_name" name="item_name" type="text" class="validate col s9">
       <button class="btn waves-effect waves-light col s2 offset-s1" type="submit">Search
           <i class="material-icons right">send</i>
         </button>
   </form>
 </div>
-<h3 class="center-align">Food inventory</h3>
+<h3 class="center-align">Supply Inventory</h3>
 <ul class="collapsible">
   {% for category in grouped_items %}
   <li>

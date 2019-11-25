@@ -20,7 +20,8 @@ Existing features:
 * As a user I want to be able to add new categories to the database
 
 ## Features
-The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of products. User can add the products he/she has in their storage using 'Add an item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low, none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
+The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of products. User can add the products he/she has in their storage using 'Add item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low and none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
+Shopping list shows the products which quantity is either 'low' or 'none'. When doing shopping, user can tap on 'Bought' button whenever an item is placed in the basket. This will remove item from the list and will change its quantity to 'full'.
 
 ## Testing
 

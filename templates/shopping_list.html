@@ -7,12 +7,14 @@
       <div class="col s12"><strong>{{category.capitalize()}}</strong></div>
       {% for product in grouped_items[category] %}
       <div class="col s8">
+        <p>
         <span>
           Name: {{product.name}},
           Note: {{product.note}}
         </span>
+      </p>
       </div>
-      <div class="col s4">
+      <div class="col s4 center-align">
           <a href="{{ url_for('buy_item', item_id=product.id) }}" class="waves-effect waves-light btn-small blue lighten-2">Bought</a>
       </div>
       {% endfor %}

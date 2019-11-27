@@ -13,7 +13,7 @@
   {% endwith %}
   <form action="/search_item" method="POST" class="col s12">
       <input placeholder="Enter item name" id="item_name" name="item_name" type="text" class="validate col s8 m9">
-      <button class="btn waves-effect waves-light col s3 m2 offset-s1 offset-m1" type="submit">Search
+      <button class="btn waves-effect waves-light col s3 m2 offset-s1 offset-m1 cyan" type="submit">Search
           <i class="material-icons right">search</i>
         </button>
   </form>
@@ -33,16 +33,18 @@
         
         {% for product in grouped_items[category] %}
         <div class="col s8">
+          <p>
           <span>
              Name: <strong>{{product.name}}</strong>, 
              Note: <strong>{{product.note}}</strong>, 
              Quantity: <strong>{{product.quantity}}</strong>,
              Last bought on: <strong>{{product.date|datetimeformat('%d-%m-%Y')}}</strong>
           </span>
+        </p>
         </div>
       <div class="right-align col s4">
-      <a href="{{ url_for('edit_item', item_id=product.id) }}" class="waves-effect waves-light btn-small blue lighten-2">Edit</a>
-      <a href="{{ url_for('delete_item', item_id=product.id) }}" class="waves-effect waves-light btn-small">Remove</a> 
+      <a href="{{ url_for('edit_item', item_id=product.id) }}" class="waves-effect waves-light btn-small cyan lighten-1">Edit</a>
+      <a href="{{ url_for('delete_item', item_id=product.id) }}" class="waves-effect waves-light btn-small red accent-1">Remove</a> 
       </div>
       {% endfor %}
     </div>

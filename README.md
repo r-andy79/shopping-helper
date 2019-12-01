@@ -38,35 +38,40 @@ The categories and quantities collections are nested in the inventory collection
 
 ## Features
 
-### Existing features
+### Existing features:
 
-- Feature 1 - allows users to add products to the database, by having them fill out the form under 'Add Item' link from the navigation bar / mobile menu,
-- Feature 2 - allows users to add new categories, by having them fill out the form under 'Add / Edit Category' link from the navigation bar / mobile menu,
-- Featire 3 - allows users to edit existing categories, by having them click the 'Edit' button next to category name,
-- Feature 4 - allows users to view the shopping list, by clicking / tapping on the 'Shopping List' link from the navigation bar / mobile menu,
-- Feature 5 - allows users to search for products in the database, by having them fill out the search form in the main application view,
-- Feature 6 - allows users to monitor quantity of different products, by clicking / tapping on specific categories in the main application view,
-- Feature 7 - allows users to update the information about the products by clicking / tapping the 'Edit' button, located to the right of product info in the main application view,
-- Feature 8 - allows users to remove products from the database by clicking / tappning the 'Remove' button, located to the right of the product info in the main application view,
-- Feature 9 - allows users to check when the item had been previously bought and it is shown in the product info in the main application view,
-- Feature 10 - allows users to remove items from the 'Shopping list' by clicking the 'Bought' button, next to the item details in the Shopping List view. It also updates the quantity of a product to 'full'
-- Feature 11 - allows users to do their shopping by department
+[X] Feature 1 - allows users to add products to the database, by having them fill out the form under 'Add Item' link from the navigation bar / mobile menu,
+[X] Feature 2 - allows users to add new categories, by having them fill out the form under 'Add / Edit Category' link from the navigation bar / mobile menu,
+[X] Featire 3 - allows users to edit existing categories, by having them click the 'Edit' button next to category name,
+[X] Feature 4 - allows users to view the shopping list, by clicking / tapping on the 'Shopping List' link from the navigation bar / mobile menu,
+[X] Feature 5 - allows users to search for products in the database, by having them fill out the search form in the main application view,
+[X] Feature 6 - allows users to monitor quantity of different products, by clicking / tapping on specific categories in the main application view,
+[X] Feature 7 - allows users to update the information about the products by clicking / tapping the 'Edit' button, located to the right of product info in the main application view,
+[X] Feature 8 - allows users to remove products from the database by clicking / tappning the 'Remove' button, located to the right of the product info in the main application view,
+[X] Feature 9 - allows users to check when the item had been previously bought and it is shown in the product info in the main application view,
+[X] Feature 10 - allows users to remove items from the 'Shopping list' by clicking the 'Bought' button, next to the item details in the Shopping List view. It also updates the quantity of a product to 'full'
+[X] Feature 11 - allows users to do their shopping by department. It is achieved by listing the products on the shopping list by category.
 
+### Features left to implement:
+
+[ ] Form validation - currently app has no forms validation
 The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of these products. Users can add the products they have in their storage using 'Add item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low and none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
 Shopping list shows the products which quantity is either 'low' or 'none'. When doing shopping, user can tap on 'Bought' button whenever an item is placed in the basket. This will remove item from the list and will change its quantity to 'full'.
 
 ### Features left to implement
 
 
+
+
 ## Technologies used
 Application was built using using the following technologies:
-* Python
-* Flask framework
-* Materialize CSS library
-* Jinja templating language
-* jQuery library
-* HTML
-* CSS
+* [Python](https://www.python.org/)
+* [Flask framework](http://flask.palletsprojects.com/en/1.1.x/)
+* [Materialize CSS library](https://materializecss.com/)
+* [Jinja templating language](https://jinja.palletsprojects.com/en/2.10.x/)
+* [jQuery library](https://jquery.com/)
+* [HTML](https://html.spec.whatwg.org/)
+* [CSS](https://docs.ckan.org/en/ckan-2.7.3/contributing/css.html)
 
 ## Testing
 

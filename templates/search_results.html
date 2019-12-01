@@ -2,7 +2,10 @@
 {% block content %}
     <h4 class="center-align">Search results</h4>
     {% if results == [] %}
-    <p class="center-align">You don't have this item, maybe you should buy it?</p>
+    <div class="row center-align">
+    <p >You don't have this item, maybe you should buy it?</p>
+    <a href="{{ url_for('add_item') }}" class="waves-effect waves-light btn center-align">Add Item</a>
+  </div>
     {% else %}
     <ul>
     {% for item in results %}
@@ -19,7 +22,4 @@
     {% endfor %}
   </ul>
     {% endif %}
-    <div class="row center-align">
-    <a href="{{ url_for('get_items') }}" class="waves-effect waves-light btn center-align">Main page</a>
-  </div>
 {% endblock %}

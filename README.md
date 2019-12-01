@@ -8,12 +8,15 @@ The aim of Shopping Helper application is to help managing household's food supp
 The applcation can serve anyone in their day-to-day shopping. It can help the user to monitor current amounts of products in their kitchen/storage and automatically create shopping list based on that information. If the information in the database is accurate, it should help users optimize their shopping.
 
 ### User stories
----
-* As a user I want to be able to add products to the database, specifying their current quantity, category and adding a short note
-* As a user I want to be able to search the database, to see if I'm in possession of certain product
-* As a user I want to be able to monitor quantity of different products that I have
-* As a user I want to be able to update the details of owned products, such as: name, note, quantity, category
-* As a user I want to be able to add new categories to the database
+
+* As a user I want to be able to add products to the database, specifying their current quantity, category and adding a short note,
+* As a user I want to be able to add a new category or edit the existing one,
+* As a user I want to be able to view the shopping lists, to see what I need to buy,
+* As a user I want to be able to search the database, to see if I'm in possession of a certain product,
+* As a user I want to be able to monitor quantity of different products that I own,
+* As a user I want to be able to update the details of owned products, such as: name, note, quantity, category,
+* As a user I want to be able to check when the item had been previously bought,
+* As a user I want to be able to remove items from the shopping list after buying them
 
 Shopping Helper uses a database that consists of three collections:
 - Inventory collection,
@@ -22,7 +25,7 @@ Shopping Helper uses a database that consists of three collections:
 
 The categories and quantities collections are nested in the inventory collection. New documents can be added to the categories collection and modified as well. The quantities collection has four predefined documents that represent states and cannot be altered by the user. The inventory collection is created by user, based on the information on the products they own (or lack) in their kitchen/storage. Please see the database schema below:
 
-![Shopping Helper application database schema](wirefarems/database_schema.png)
+![Shopping Helper application database schema](wireframes/database_schema.png)
 
 [Here](wireframes/) you can find wireframes for different views of the application across various devices:
 - desktop / laptop,

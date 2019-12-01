@@ -10,13 +10,16 @@ The applcation can serve anyone in their day-to-day shopping. It can help the us
 ### User stories
 
 * As a user I want to be able to add products to the database, specifying their current quantity, category and adding a short note,
-* As a user I want to be able to add a new category or edit the existing one,
-* As a user I want to be able to view the shopping lists, to see what I need to buy,
+* As a user I want to be able to add a new category,
+* As a user I want to be able to edit an existing category,
+* As a user I want to be able to view the shopping list, to see what I need to buy,
 * As a user I want to be able to search the database, to see if I'm in possession of a certain product,
 * As a user I want to be able to monitor quantity of different products that I own,
 * As a user I want to be able to update the details of owned products, such as: name, note, quantity, category,
+* As a user I want to be able to delete products from the database,
 * As a user I want to be able to check when the item had been previously bought,
 * As a user I want to be able to remove items from the shopping list after buying them
+* As a user I want to be able to do shopping by department
 
 Shopping Helper uses a database that consists of three collections:
 - Inventory collection,
@@ -33,19 +36,23 @@ The categories and quantities collections are nested in the inventory collection
 - smartphone
 
 
-
-Existing features:
-* adding items to the inventory,
-* editing and removing existing items,
-* filtering items based on quantities of the products (shopping list)
-* searching the database to check if item exists in inventory,
-* 
-
 ## Features
 
 ### Existing features
 
-The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of products. User can add the products he/she has in their storage using 'Add item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low and none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
+- Feature 1 - allows users to add products to the database, by having them fill out the form under 'Add Item' link from the navigation bar / mobile menu,
+- Feature 2 - allows users to add new categories, by having them fill out the form under 'Add / Edit Category' link from the navigation bar / mobile menu,
+- Featire 3 - allows users to edit existing categories, by having them click the 'Edit' button next to category name,
+- Feature 4 - allows users to view the shopping list, by clicking / tapping on the 'Shopping List' link from the navigation bar / mobile menu,
+- Feature 5 - allows users to search for products in the database, by having them fill out the search form in the main application view,
+- Feature 6 - allows users to monitor quantity of different products, by clicking / tapping on specific categories in the main application view,
+- Feature 7 - allows users to update the information about the products by clicking / tapping the 'Edit' button, located to the right of product info in the main application view,
+- Feature 8 - allows users to remove products from the database by clicking / tappning the 'Remove' button, located to the right of the product info in the main application view,
+- Feature 9 - allows users to check when the item had been previously bought and it is shown in the product info in the main application view,
+- Feature 10 - allows users to remove items from the 'Shopping list' by clicking the 'Bought' button, next to the item details in the Shopping List view. It also updates the quantity of a product to 'full'
+- Feature 11 - allows users to do their shopping by department
+
+The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of these products. Users can add the products they have in their storage using 'Add item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low and none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
 Shopping list shows the products which quantity is either 'low' or 'none'. When doing shopping, user can tap on 'Bought' button whenever an item is placed in the basket. This will remove item from the list and will change its quantity to 'full'.
 
 ### Features left to implement

@@ -5,22 +5,31 @@ Third Milestone Project - Data-Centric Development - Code Institute
 The aim of Shopping Helper application is to help managing household's food supplies and optimize groceries shopping. Application consists of two main sections: Supplies Inventory and a Shopping List. User can add products to the inventory, specifying their name, category and quantity. If the amount of a certain product is set to 'low' or 'none', the item will appear on a Shopping list. User can also add new categories and edit them. I don't like preparing shopping lists, as I always forget to put something on it or I end up buying products that I already have, but I don't remember about that fact. The goal of the application is to prevent 'overbuying' products and waste less food. This can be achieved by keeping the information in the database up-to-date.
 
 ## UX
-The applcation can serve anyone who does everyday shopping. 
+The applcation can serve anyone in their day-to-day shopping. It can help the user to monitor current amounts of products in their kitchen/storage and automatically create shopping list based on that information. If the information in the database is accurate, it should help users optimize their shopping.
+
+### User stories
+---
+* As a user I want to be able to add products to the database, specifying their current quantity, category and adding a short note
+* As a user I want to be able to search the database, to see if I'm in possession of certain product
+* As a user I want to be able to monitor quantity of different products that I have
+* As a user I want to be able to update the details of owned products, such as: name, note, quantity, category
+* As a user I want to be able to add new categories to the database
 
 Shopping Helper uses a database that consists of three collections:
 - Inventory collection,
 - Categories collection,
 - Quantities collection,
 
-The categories and quantities collections are nested in the inventory collection. New documents can be added to the categories collection and modified as well. The quantities collection has four predefined documents that represent states and they cannot be altered by the user. The inventory collection is created by user, based on the information on the products they own (or lack) in their kitchen/storage.
+The categories and quantities collections are nested in the inventory collection. New documents can be added to the categories collection and modified as well. The quantities collection has four predefined documents that represent states and cannot be altered by the user. The inventory collection is created by user, based on the information on the products they own (or lack) in their kitchen/storage. Please see the database schema below:
 
-## User stories
+![Shopping Helper application database schema](wirefarems/database_schema.png)
 
-* As a user I want to be able to add products to the database, specifying their current quantity, category and adding a short note
-* As a user I want to be able to search the database, to see if I'm in possession of certain product
-* As a user I want to be able to monitor quantity of different products that I have
-* As a user I want to be able to update the details of owned products, such as: name, note, quantity, category
-* As a user I want to be able to add new categories to the database
+[Here](wireframes/) you can find wireframes for different views of the application across various devices:
+- desktop / laptop,
+- tablet,
+- smartphone
+
+
 
 Existing features:
 * adding items to the inventory,

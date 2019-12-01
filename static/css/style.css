@@ -10,6 +10,10 @@
   margin: 20px 0 30px;
 }
 
+.flash-message {
+  background-color: #e3f2fd !important;
+}
+
 @media (max-width: 600px) {
   .brand-logo {
     font-size: 16px !important;

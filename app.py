@@ -44,6 +44,7 @@ def get_items():
 
 @app.route("/shopping_list")
 def shopping_list():
+    """Shopping list view displaying items where quantity is 'low' or 'none'"""
     inventory=inventory_collection.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]})
     grouped_items = group_by_category(inventory)
     return render_template("shopping_list.html", grouped_items=grouped_items)
@@ -120,6 +121,7 @@ def buy_item(item_id):
 @app.route('/delete_item/<item_id>')
 def delete_item(item_id):
     inventory_collection.remove({"_id": ObjectId(item_id)})
+    flash('Item has been removed')
     return redirect(url_for('get_items'))
 
 

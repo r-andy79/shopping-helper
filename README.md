@@ -7,6 +7,14 @@ The aim of Shopping Helper application is to help managing household's food supp
 Table of contents:
 - [Overview](#shopping-helper-application)
 - [UX](#ux)
+- [User stories](#user-stories)
+- [Features](#features)
+  - [Existing features](#existing-features)
+  - [Features left to implement](#features-left-to-implement)
+- [Technologies used](#technologies-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Acknowledgements](#acknowledgements)
 
 ## UX
 The applcation can serve anyone in their day-to-day shopping. It can help the user to monitor current amounts of products in their kitchen/storage and automatically create shopping list based on that information. If the information in the database is accurate, it should help users optimize their shopping.
@@ -62,11 +70,6 @@ The categories and quantities collections are nested in the inventory collection
 
 The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of these products. Users can add the products they have in their storage using 'Add item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low and none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
 Shopping list shows the products which quantity is either 'low' or 'none'. When doing shopping, user can tap on 'Bought' button whenever an item is placed in the basket. This will remove item from the list and will change its quantity to 'full'.
-
-### Features left to implement
-
-
-
 
 ## Technologies used
 Application was built using using the following technologies:

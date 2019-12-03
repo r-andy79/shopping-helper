@@ -17,7 +17,7 @@ Table of contents:
 - [Acknowledgements](#acknowledgements)
 
 ## UX
-The applcation can serve anyone in their day-to-day shopping. It can help the user to monitor current amounts of products in their kitchen/storage and automatically create shopping list based on that information. If the information in the database is accurate, it should help users optimize their shopping.
+The applcation can serve anyone in their day-to-day shopping. It can be used by a single user, or a household / community members. It can help the user(s) to monitor current amounts of products in their kitchen/storage and automatically create shopping list based on that information. Provided the information in the database is accurate, it should help users optimize their shopping.
 
 ### User stories
 
@@ -61,27 +61,51 @@ The categories and quantities collections are nested in the inventory collection
 - [x] Feature 7 - allows users to update the information about the products by clicking / tapping the 'Edit' button, located to the right of product info in the main application view,
 - [x] Feature 8 - allows users to remove products from the database by clicking / tappning the 'Remove' button, located to the right of the product info in the main application view,
 - [x] Feature 9 - allows users to check when the item had been previously bought and it is shown in the product info in the main application view,
-- [x] Feature 10 - allows users to remove items from the 'Shopping list' by clicking the 'Bought' button, next to the item details in the Shopping List view. It also updates the quantity of a product to 'full'
+- [x] Feature 10 - allows users to remove items from the 'Shopping list' by clicking the 'Bought' button, next to the item details in the Shopping List view. It also updates the quantity of the product to 'full'
 - [x] Feature 11 - allows users to do their shopping by department. It is achieved by listing the products on the shopping list by category.
 
 ### Features left to implement:
 
 - [ ] Form validation - currently app has no forms validation
+- [ ] Login functionality
 
 The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of these products. Users can add the products they have in their storage using 'Add item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low and none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
 Shopping list shows the products which quantity is either 'low' or 'none'. When doing shopping, user can tap on 'Bought' button whenever an item is placed in the basket. This will remove item from the list and will change its quantity to 'full'.
 
 ## Technologies used
 Application was built using using the following technologies:
-* [Python](https://www.python.org/)
-* [Flask framework](http://flask.palletsprojects.com/en/1.1.x/)
-* [Materialize CSS library](https://materializecss.com/)
-* [Jinja templating language](https://jinja.palletsprojects.com/en/2.10.x/)
-* [jQuery library](https://jquery.com/)
-* [HTML](https://html.spec.whatwg.org/)
-* [CSS](https://docs.ckan.org/en/ckan-2.7.3/contributing/css.html)
+* [Python](https://www.python.org/) - used for general-purpose programming and writing the logic of the application,
+* [Flask framework](http://flask.palletsprojects.com/en/1.1.x/) - used for serving templates, performing CRUD operations
+* [MongoDB](https://www.mongodb.com/) - used for storing the application data,
+* [Materialize CSS library](https://materializecss.com/) - used for building the visual side of the application,
+* [Jinja templating language](https://jinja.palletsprojects.com/en/2.10.x/) - used for incorporating Python code into HTML templates,
+* [jQuery library](https://jquery.com/) - used for triggering functions required by the Materialize library,
+* [HTML](https://html.spec.whatwg.org/) - used for building the structure of the interface,
+* [CSS](https://docs.ckan.org/en/ckan-2.7.3/contributing/css.html) - used for custom styling of some elements
 
 ## Testing
+Application has been tested across different devices:
+* desktop,
+* laptop,
+* tablet,
+* smartphone,
+
+as well as different browsers:
+
+* Google Chrome (desktop & mobile),
+* Mozilla Firefox (desktop),
+* Microsoft Edge (desktop),
+* Brave (mobile).
+
+Application works correctly across different screen and resolutions, as well as the orientations.
+
+Aplication functions have been tested to ensure they work correctly:
+
+* CRUD operations - all functions work correctly, aplication retrieves data from the database with no issues. New items can be added, as well as being updated and deleted from the database.
+* Search input searches the database and returns the results or provides a message to the user in case there are no matching results,
+
+Unit tests were written and are located in [tests.py](tests.py) file. These test are meant to prove if the templates are displayed correctly. They can be run by typing `python3 tests.py`. The tests ran successfully and results can be found [here](wireframes/test_screenshot.png).
+
 
 ## Deployment
 

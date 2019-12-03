@@ -16,6 +16,7 @@ categories_collection = mongo.db.categories
 quantities_collection = mongo.db.quantities
 
 def group_by_category(products):
+    """Function allowing to group the products by category"""
     categories = {}
     for p in products:
         i = p['_id']

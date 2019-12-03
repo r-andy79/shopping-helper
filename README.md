@@ -2,7 +2,8 @@
 
 Third Milestone Project - Data-Centric Development - Code Institute
 
-The aim of Shopping Helper application is to help managing household's food supplies and optimize groceries shopping. Application consists of two main sections: Supplies Inventory and a Shopping List. User can add products to the inventory, specifying their name, category and quantity. If the amount of a certain product is set to 'low' or 'none', the item will appear on a Shopping list. User can also add new categories and edit them. I don't like preparing shopping lists, as I always forget to put something on it or I end up buying products that I already have, but I don't remember about that fact. The goal of the application is to prevent 'overbuying' products and waste less food. This can be achieved by keeping the information in the database up-to-date.
+The aim of Shopping Helper application is to help managing household's food supplies and optimize groceries shopping. Application consists of two main sections: Supplies Inventory and a Shopping List. User can add products to the inventory, specifying their name, category and quantity. If the amount of a certain product is set to 'low' or 'none', the item will appear on a Shopping list. User can also add new categories and edit them. I don't like preparing shopping lists, as I always forget to put something on it or I end up buying products that I already have, but I don't remember about that fact. The goal of the application is to prevent 'overbuying' products and waste less food. This can be achieved by keeping the information in the database up-to-date. Once the products are input in the database, they can be updated 'on-the-go' as they are being consumed. This can save us time, as we don't have to prepare shopping lists every time we go shopping, but they are being created incrementally.
+I wanted to build an application that would be useful to me in my everyday life and help me to save time and waste less food.
 
 Table of contents:
 - [Overview](#shopping-helper-application)
@@ -18,6 +19,8 @@ Table of contents:
 
 ## UX
 The applcation can serve anyone in their day-to-day shopping. It can be used by a single user, or a household / community members. It can help the user(s) to monitor current amounts of products in their kitchen/storage and automatically create shopping list based on that information. Provided the information in the database is accurate, it should help users optimize their shopping.
+
+I wanted the user interface to be simple and consistent throughout the whole application. The data is presented in a clean and organized way. User has easy access to all the functions from the navigation bar on larger screens or a mobile menu that is triggered by the 'hamburger' button.
 
 ### User stories
 
@@ -49,6 +52,8 @@ The categories and quantities collections are nested in the inventory collection
 
 
 ## Features
+
+The application has a number of features that are described below:
 
 ### Existing features:
 
@@ -109,4 +114,22 @@ Unit tests were written and are located in [tests.py](tests.py) file. These test
 
 ## Deployment
 
+Application has been deployed to Heroku platform and is available under [this](http://shopping-helper-app.herokuapp.com/) link. In order to deploy the application to Heroku, the following steps must be followed:
+1. Log in to [Heroku](https://www.heroku.com/) platform,
+2. Create a new app,
+3. Log in to Heroku from the terminal of your editor/platform using your credentials,
+4. Create `requirements.txt` file using `sudo pip3 freeze --local > requirements.txt` command,
+5. Create a `Procfile` using `echo web: python app.py > Procfile`,
+6. Initialize new Git repository, by inputting `git init`,
+7. Add the files to the repository, by inputting `git add .`,
+8. Commit the changes to the repository, by inputting `git commit -m 'Initial commit'`,
+9. Associate the Heroku application as a branch of the repository by inputting `heroku git:remote -a shopping-helper-app`,
+10. Push the application to Heroku, by inputting `git push heroku master`,
+11. Run the application using `heroku ps:scale web=1`,
+12. Specify IP and PORT as config vars in Heroku app setting
+
+The repository of the application is available on the master branch on [GitHub](https://github.com/r-andy79/shopping-helper). New functions were built on new branches and merged with master branch, after they had been tested successfully.
+
 ## Acknowledgements
+
+The idea for the application comes from the 'To-do list' mini project from the Data-Centric Development module. 

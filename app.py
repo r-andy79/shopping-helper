@@ -33,18 +33,20 @@ def group_by_category(products):
 
 @app.template_filter('datetimeformat')
 def datetimeformat(value, format='%d-%m-%Y'):
+    """Filter for formatting the date in the application"""
     return value.strftime(format)
 
 @app.route("/")
 @app.route("/get_items")
 def get_items():
+    """Function responsible for the main view of the application, displays all items in the database grouped by category"""
     inventory=inventory_collection.find()
     grouped_items = group_by_category(inventory)
     return render_template("items.html", grouped_items=grouped_items)
 
 @app.route("/shopping_list")
 def shopping_list():
-    """Shopping list view displaying items where quantity is 'low' or 'none'"""
+    """Shopping list view displays items where quantity is 'low' or 'none'"""
     inventory=inventory_collection.find({"$or": [{"quantity_name": "none"},{"quantity_name": "low"}]})
     grouped_items = group_by_category(inventory)
     return render_template("shopping_list.html", grouped_items=grouped_items)
@@ -52,11 +54,13 @@ def shopping_list():
 
 @app.route('/add_item')
 def add_item():
+    """Add new item view allows user to access the form collecting information about new items"""
     return render_template("additem.html", categories=categories_collection.find(), quantities=quantities_collection.find())
 
 
 @app.route('/search_item', methods=['GET', 'POST'])
 def search_item():
+    """Search item view allows user to search the database using product name"""
     search_item = request.form.get('item_name')
     results=inventory_collection.find({"item_name": {"$regex": search_item}})
     results_list = [result for result in results]
@@ -65,6 +69,7 @@ def search_item():
 
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
+    """Allows user to insert new item to the database"""
     items = inventory_collection
     form = request.form.to_dict()
     items.insert_one({
@@ -81,6 +86,7 @@ def insert_item():
 
 @app.route('/edit_item/<item_id>')
 def edit_item(item_id):
+    """Allows user to edit an existing item"""
     the_item = inventory_collection.find_one({"_id": ObjectId(item_id)})
     _categories = categories_collection.find()
     _quantities = quantities_collection.find()
@@ -91,6 +97,7 @@ def edit_item(item_id):
 
 @app.route('/update_item/<item_id>', methods=['POST'])
 def update_item(item_id):
+    """Updates the specified item information in the database"""
     items = inventory_collection
     items.update( {'_id': ObjectId(item_id)},
     {"$set":
@@ -107,6 +114,7 @@ def update_item(item_id):
 
 @app.route('/buy_item/<item_id>', methods=['GET', 'POST'])
 def buy_item(item_id):
+    """Updates item quantity to 'full' when an item has been bought. As a result the item is no longer displayed on the shopping list"""
     items = inventory_collection
     items.update({'_id': ObjectId(item_id)},
     {"$set":
@@ -120,6 +128,7 @@ def buy_item(item_id):
 
 @app.route('/delete_item/<item_id>')
 def delete_item(item_id):
+    """Deletes specified item from the database"""
     inventory_collection.remove({"_id": ObjectId(item_id)})
     flash('Item has been removed')
     return redirect(url_for('get_items'))
@@ -127,11 +136,13 @@ def delete_item(item_id):
 
 @app.route('/add_category')
 def add_category():
+    """Add category view allows user to access the form collecting information about new categories and displays the existing categories"""
     return render_template('addcategory.html', categories=categories_collection.find())
 
 
 @app.route('/insert_category', methods=['POST'])
 def insert_category():
+    """Inserts new category into the database"""
     categories = mongo.db.categories
     categories.insert_one(request.form.to_dict())
     return redirect(url_for('add_category'))
@@ -139,6 +150,7 @@ def insert_category():
 
 @app.route('/edit_category/<item_id>')
 def edit_category(item_id):
+    """Allows user to edit the name of an existing category"""
     the_category = categories_collection.find_one({"_id": ObjectId(item_id)})
     _categories = categories_collection.find()
     category_list = [category for category in _categories]
@@ -147,6 +159,7 @@ def edit_category(item_id):
 
 @app.route('/update_category/<item_id>', methods=['POST'])
 def update_category(item_id):
+    """Updates the category name in the database in Category and Inventory collection"""
     current_category_name = categories_collection.find_one({'_id': ObjectId(item_id)})['category_name']
     print(current_category_name)
     inventory = inventory_collection
@@ -167,6 +180,7 @@ def update_category(item_id):
 
 @app.errorhandler(404)
 def not_found(error):
+    """Displays an error page in case the desired page is not found"""
     return render_template('404.html')
 
     

@@ -128,6 +128,8 @@ Application has been deployed to Heroku platform and is available under [this li
 11. Run the application using `heroku ps:scale web=1`,
 12. Specify IP and PORT as config vars in Heroku app setting
 
+There are no differences between deployed and development version of the application.
+
 The repository of the application is available on the master branch on [GitHub](https://github.com/r-andy79/shopping-helper). New functions were built on new branches and merged with master branch, after they had been tested successfully.
 
 ## Acknowledgements

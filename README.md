@@ -64,9 +64,9 @@ The application has a number of features that are described below:
 - [x] Feature 5 - allows users to search for products in the database, by having them fill out the search form in the main application view,
 - [x] Feature 6 - allows users to monitor quantity of different products, by clicking / tapping on specific categories in the main application view,
 - [x] Feature 7 - allows users to update the information about the products by clicking / tapping the 'Edit' button, located to the right of product info in the main application view,
-- [x] Feature 8 - allows users to remove products from the database by clicking / tappning the 'Remove' button, located to the right of the product info in the main application view,
-- [x] Feature 9 - allows users to check when the item had been previously bought and it is shown in the product info in the main application view,
-- [x] Feature 10 - allows users to remove items from the 'Shopping list' by clicking the 'Bought' button, next to the item details in the Shopping List view. It also updates the quantity of the product to 'full'
+- [x] Feature 8 - allows users to remove products from the database by clicking / tapping the 'Remove' button, located to the right of the product info in the main application view,
+- [x] Feature 9 - allows users to check when the item had been previously bought. This information is shown in the product info of the main application view,
+- [x] Feature 10 - allows users to remove items from the 'Shopping list' by clicking the 'Bought' button, next to the item details in the Shopping List view. It is done by updating the product quantity to 'full'
 - [x] Feature 11 - allows users to do their shopping by department. It is achieved by listing the products on the shopping list by category.
 
 ### Features left to implement:
@@ -74,11 +74,11 @@ The application has a number of features that are described below:
 - [ ] Form validation - currently app has no forms validation
 - [ ] Login functionality
 
-The purpose of the app is to help managing household supplies by keeping track of posessed goods and create shopping list based on the quantities of these products. Users can add the products they have in their storage using 'Add item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low and none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by the category. User can view what products are under specific category by clicking on it.
-Shopping list shows the products which quantity is either 'low' or 'none'. When doing shopping, user can tap on 'Bought' button whenever an item is placed in the basket. This will remove item from the list and will change its quantity to 'full'.
+Users can add the products they have in their storage using 'Add item' form and specifying item's name, category, quantity. A short note can also be added. Apart from these four values, current timestamp is also being added to the database. User can choose from 4 quantities that will be assigned to the product: full, safe amount, low or none. If quantity of product is 'low' or 'none', the item will display on the 'Shopping list'. Products are ordered by category. User can view products that are under specific category by clicking on it in the main application screen.
+Shopping list shows the products with quantities 'low' or 'none'. When doing shopping, user can tap on 'Bought' button whenever an item is placed in the basket. This will remove item from the list and will change its quantity to 'full'.
 
 ## Technologies used
-Application was built using using the following technologies:
+Application was built using using following technologies:
 * [Python](https://www.python.org/) - used for general-purpose programming and writing the logic of the application,
 * [Flask framework](http://flask.palletsprojects.com/en/1.1.x/) - used for serving templates, performing CRUD operations
 * [MongoDB](https://www.mongodb.com/) - used for storing the application data,
@@ -114,12 +114,12 @@ Unit tests were written and are located in [tests.py](tests.py) file. These test
 
 ## Deployment
 
-Application has been deployed to Heroku platform and is available under [this](http://shopping-helper-app.herokuapp.com/) link. In order to deploy the application to Heroku, the following steps must be followed:
+Application has been deployed to Heroku platform and is available under [this link](http://shopping-helper-app.herokuapp.com/). In order to deploy the application to Heroku, the following steps were followed:
 1. Log in to [Heroku](https://www.heroku.com/) platform,
 2. Create a new app,
 3. Log in to Heroku from the terminal of your editor/platform using your credentials,
 4. Create `requirements.txt` file using `sudo pip3 freeze --local > requirements.txt` command,
-5. Create a `Procfile` using `echo web: python app.py > Procfile`,
+5. Create a `Procfile` using `echo web: python app.py > Procfile` command,
 6. Initialize new Git repository, by inputting `git init`,
 7. Add the files to the repository, by inputting `git add .`,
 8. Commit the changes to the repository, by inputting `git commit -m 'Initial commit'`,
